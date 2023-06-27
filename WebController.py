@@ -28,6 +28,7 @@ def initiate_contexto():
     try:
         driver.find_element(By.CLASS_NAME, 'fc-primary-button').click()
     except:
+        # N-am nici o idee cum sa fac handle la asta in a real way
         print("Consent cookie button could not be pressed. initiate_contexto() failed")
         return False
     else:
