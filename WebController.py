@@ -1,6 +1,7 @@
 import os
 import re
 import time
+import json
 from random_words import RandomWords
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -102,3 +103,4 @@ class WebController:
         rw = RandomWords()
         random_word = rw.random_word()
         self._driver.find_element(By.NAME, 'word').send_keys(random_word, Keys.ENTER)
+
