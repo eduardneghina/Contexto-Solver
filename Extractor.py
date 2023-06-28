@@ -28,4 +28,7 @@ class Extractor:
         elements = driver.find_elements(By.CLASS_NAME, 'row-wrapper')
         for e in elements:
             data.append(e.text.split('\n'))
-        return data
+        # filtru duplicate
+        res = []
+        [res.append(x) for x in data if x not in res]
+        return res
