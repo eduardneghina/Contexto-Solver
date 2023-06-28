@@ -6,14 +6,10 @@ import re
 import json
 import time
 from WebController import *
-class Extractor:
-    data = None
 
-    def __init__(self, path):
-        if os.path.exists(path):
-            self.load(path)
-        else:
-            self.data = {}
+class Extractor:
+    def __init__(self):
+        pass
 
     def save(self, path):
         json.dump(self.data, open(path, 'w'))
@@ -21,10 +17,15 @@ class Extractor:
     def load(self, path):
         self.data = json.load(open(path))
 
-    def extract_game_data(self, game_number):
-        webcontrol = WebController()
+    def extract_game_data(self, game_number, driver):
+        webcontrol = WebController(driver)
         webcontrol.click_desired_previous_games(game_number)
         webcontrol.click_give_up()
+        time.sleep(3)
         webcontrol.click_closest_word()
-        #collect data , put it somewhere, do some while / for -> outpur json/txt
-
+        time.sleep(3)
+        data = []
+        elements = driver.find_elements(By.CLASS_NAME, 'row-wrapper')
+        for e in elements:
+            data.append(e.text.split('\n'))
+        return data

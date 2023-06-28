@@ -1,19 +1,11 @@
 import time
-
 from WebController import *
 from Database import *
+from Extractor import *
 
-driver_web = initiate_contexto()
-controller = WebController(driver_web)
-time.sleep(3)
-controller.click_desired_previous_games(40);
-time.sleep(3)
-controller.insert_random_word()
-time.sleep(3)
-#looks fine so far
-
-
-#let's test the db
-connection = Database()
-print(connection.fetch_all())
-connection.close()
+driver = initiate_contexto()
+extract = Extractor()
+a = extract.extract_game_data(40, driver)
+print(a)
+# output will be the list from game 40 : ['potato', '1'], ['mash', '2'], ['carrot', '3'], ['onion', '4'], ['vegetable', '5'], ..etc
+time.sleep(10)
