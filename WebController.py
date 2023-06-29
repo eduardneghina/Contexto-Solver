@@ -69,7 +69,6 @@ class WebController:
             if e is not None:
                 a = e.text.split()
                 return a
-                break
 
     def get_words_and_ids_list(self): # doar 80 de minute pentru asta, nu am idee de ce merge o.O  # DEMO #2
         a = str(self.__get_word_and_id_list_raw())
