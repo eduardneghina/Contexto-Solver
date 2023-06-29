@@ -2,5 +2,9 @@ import time
 import re
 import gensim.downloader as api
 class AI:
-    def _init_(self):
+    def __init__(self):
         self._model = api.load('glove-wiki-gigaword-50')
+
+    def get_similar_words(self, word):
+        similar_words = self._model.most_similar(word, restrict_vocab=10000)
+        return similar_words
