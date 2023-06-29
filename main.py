@@ -10,15 +10,26 @@ def main():
         controller = WebController(driver)
         print("Choose an option:")
         print("1. Brute force - incearca random toate cuvintele din history ")
-        print("2. ")
+        print("2. Smart search (experimental) ")
         print("3. ")
         print("0. Exit")
         choice = input("Enter your choice: ")
         if choice == "1":
-            ai = AI()
-            ai.try_random_noun_until_find(driver) # working .. well, for a brute force 
+            choice1_2 = input("What game number? leave empty and enter for today game: ")
+            if choice1_2 == "":
+                ai = AI()
+                ai.try_random_noun_until_find(driver, None)
+            else:
+                ai = AI()
+                ai.try_random_noun_until_find(driver, int(choice1_2))
         elif choice == "2":
-            pass
+            choice2_1 = input("What game number? leave empty and enter for today game: ")
+            if choice2_1 == "":
+                ai = AI()
+                ai.try_smart_ish(driver, None)
+            else:
+                ai = AI()
+                ai.try_smart_ish(driver, int(choice2_1))
         elif choice == "3":
             pass
         elif choice == "0":

@@ -63,6 +63,11 @@ class WebController:
                 a.append(e.text)
                 return a
 
+    def clear_text_area(self):
+        elements = self._driver.find_elements(By.CLASS_NAME, 'word')
+        for e in elements:
+            e.clear()
+
     def get_word_and_id(self):
         elements = self._driver.find_elements(By.XPATH, '//*[@id="root"]/div/div[4]/div/div/div[2]')
         for e in elements:
@@ -132,8 +137,9 @@ class WebController:
         elements = self._driver.find_elements(By.CLASS_NAME, 'word')
         for e in elements:
             e.send_keys(str(word))
-            time.sleep(1)
+            # time.sleep(1) <- use this for slow internet :)
             e.send_keys(Keys.ENTER)
             time.sleep(1)
+
 
 
