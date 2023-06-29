@@ -55,6 +55,14 @@ class WebController:
                 e.click()
                 break
 
+    def __get_word_and_id_list_raw(self):
+        elements = self._driver.find_elements(By.CLASS_NAME, 'guess-history')
+        for i in range(10):
+            for e in elements:
+                a = []
+                a.append(e.text)
+                return a
+
     def get_word_and_id(self):
         elements = self._driver.find_elements(By.XPATH, '//*[@id="root"]/div/div[4]/div/div/div[2]')
         for e in elements:
@@ -63,6 +71,15 @@ class WebController:
                 return a
                 break
 
+    def get_words_and_ids_list(self): # doar 80 de minute pentru asta, nu am idee de ce merge o.O  # DEMO #2
+        a = str(self.__get_word_and_id_list_raw())
+        a = a.strip("[]").strip("'").replace("\\n", "\n")
+        words = a.split()
+        my_list = []
+        for i in range(0, len(words) - 1, 2):
+            if words[i].isalpha() and words[i + 1].isdigit():
+                my_list.append((words[i], words[i + 1]))
+        return my_list
 
     def click_give_up(self):
         self.__click_3dots()
