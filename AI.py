@@ -18,7 +18,7 @@ class AI:
         return list_to_return
 
     def get_similar_words(self, word):
-        similar_words = self._model.most_similar(word, restrict_vocab=20000) # doar 10.000 de links/tokens something ca sa fie rapid/decent
+        similar_words = self._model.most_similar(word, restrict_vocab=20000) # increased to 20k
         return similar_words
 
     def try_random_noun_until_find(self, driver, game_number):
@@ -51,17 +51,8 @@ class AI:
 
         while True:  # id - most_close[0][1] // word - most_close[0][0]
             most_close = web.get_words_and_ids_list()
-            print("the most close")
-            print(most_close)
             similar_words_raw = self.get_similar_words(most_close[0][0])
-            print("similar words raw")
-            print(similar_words_raw)
             similar_words = self.__refactor_list_similar_words(similar_words_raw)
-            print("similar refactor")
-            print(similar_words)
-            #to_type = random.sample(similar_words, 1)[0]
-          #  print("to type ")
-          #  print(to_type)
             for e in similar_words:
                 web.insert_a_word(e)
                 web.clear_text_area()
@@ -71,7 +62,6 @@ class AI:
                 break
             else:
                 pass
-
         else:
             pass
 
