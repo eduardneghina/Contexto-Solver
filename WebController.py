@@ -48,13 +48,21 @@ class WebController:
             e.click()
             break
 
-    # private, needed only for the next method
     def __click_yes_for_give_up(self):
         elements = self._driver.find_elements(By.CLASS_NAME, 'share-btn')
         for e in elements:
             if e.text == 'Yes':
                 e.click()
                 break
+
+    def get_word_and_id(self):
+        elements = self._driver.find_elements(By.XPATH, '//*[@id="root"]/div/div[4]/div/div/div[2]')
+        for e in elements:
+            if e is not None:
+                a = e.text.split()
+                return a
+                break
+
 
     def click_give_up(self):
         self.__click_3dots()
@@ -103,4 +111,13 @@ class WebController:
         rw = RandomWords()
         random_word = rw.random_word()
         self._driver.find_element(By.NAME, 'word').send_keys(random_word, Keys.ENTER)
+
+    def insert_a_word(self, word):
+        elements = self._driver.find_elements(By.CLASS_NAME, 'word')
+        for e in elements:
+            e.send_keys(str(word))
+            time.sleep(1)
+            e.send_keys(Keys.ENTER)
+            time.sleep(1)
+
 
