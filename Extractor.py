@@ -7,6 +7,9 @@ import json
 import time
 from WebController import *
 
+#Clasa extractor scoate in general informatii, le formateaza asa cum le dorim si le trimite mai departe
+#Am creat aici si o clasa mostenita pentru exemplu
+
 class Extractor:
     def __init__(self, driver):
         self._driver = driver

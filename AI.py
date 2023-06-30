@@ -3,6 +3,10 @@ import re
 import random
 import gensim.downloader as api
 from WebController import *
+################################
+# Clasa de AI aduna cele mai importante functii si metode si le pune cap la cap pentru a ajunge la rezultatul dorit, in cazul nostru cuvantul secret
+# modelul glove-wiki-gigaword-50 este unul dintre cele mai mici dar destul de complex, avantaj ca poate fi descarcat prin api direct de user
+################################
 class AI:
     def __init__(self):
         self._model = api.load('glove-wiki-gigaword-50')

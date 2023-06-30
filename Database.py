@@ -1,5 +1,7 @@
 import sqlite3
 
+# Clasa database creata doar ca exemplu, nu am vazut momentan necesitatea dar sunt sigur ca poate fi folosita cu succes in acest proeict.
+
 class Database():
     def __init__(self):
         self.connection = sqlite3.connect('contexto.db')

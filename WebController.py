@@ -9,16 +9,15 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 
 # ##############################################################################
-# WebController este o clasa in care gasim metodele care ne lasa sa interctionam
-# cu Contexto la nivel de browser.
-# Am creat mai multe metode utile pentru interactiunea cu contexto.me
-#
-#
+# WebController este o clasa in care gasim metodele care ne lasa sa interctionam cu Contexto la nivel de browser.
+# Functia de initializare a fost lasata aici deoarece ea paseaza mai departe "driverul" care este controlul catre obiectele/metodele care o cer.
+# Astfel, daca initializarea nu se termina cu succes nici nu merge mai departe
+# Numele metodelor sunt in general destul de clare, am incercat sa folosesc si metode privat ca exemplu.
+# for in elements e cea mai rapida dar si putin volatila metoda, se poate implementa o metoda de wait to exist dar care pentru moment mi s-a parut prea complicata.
 # ###############################################################################
 
 # Am lasat functia asta in afara clasei pentru ca nu stiu cum sa o intregrez mai frumos sa returneze driverul dupa initiate
 # si ca sa nu fac haos in main.py am lasat aici totul.
-
 # Initiating browser + click consent button + return driver
 def initiate_contexto():
     driver = webdriver.Chrome()
