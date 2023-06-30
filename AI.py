@@ -21,6 +21,12 @@ class AI:
         list_to_return = re.sub('[^a-zA-Z]+', ' ', str(list)).split()
         return list_to_return
 
+    def give_up_and_return_the_word_no_game_number(self, driver):
+        web = WebController(driver)
+        web.click_give_up()
+        time.sleep(1)
+        a = web.get_secret_word()
+        return a
     def give_up_and_return_the_word(self, driver, game_number):
         web = WebController(driver)
         web.click_desired_previous_games(game_number)

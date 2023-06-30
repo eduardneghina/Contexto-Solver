@@ -55,7 +55,8 @@ def main():
         elif choice == "3":
             choice3_1 = input("What game number? leave empty and enter for today game: ")
             if choice3_1 == "":
-                pass
+                ai = AI()
+                print(ai.give_up_and_return_the_word_no_game_number(driver))
             else:
                 ai = AI()
                 print("The secret word for game number " + str(choice3_1) + " was")
