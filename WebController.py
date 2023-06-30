@@ -63,6 +63,11 @@ class WebController:
                 a.append(e.text)
                 return a
 
+    def get_secret_word(self):
+        elements = self._driver.find_elements(By.CLASS_NAME, 'row')
+        for e in elements:
+            return e.text
+
     def clear_text_area(self):
         elements = self._driver.find_elements(By.CLASS_NAME, 'word')
         for e in elements:

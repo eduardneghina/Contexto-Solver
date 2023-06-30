@@ -11,7 +11,7 @@ def main():
         print("Choose an option:")
         print("1. Brute force - incearca random toate cuvintele din history ")
         print("2. Smart search (experimental) ")
-        print("3. ")
+        print("3. Get the secret word by giving up")
         print("0. Exit")
         choice = input("Enter your choice: ")
         if choice == "1":
@@ -31,7 +31,13 @@ def main():
                 ai = AI()
                 ai.try_smart_ish(driver, int(choice2_1))
         elif choice == "3":
-            pass
+            choice3_1 = input("What game number? leave empty and enter for today game: ")
+            if choice3_1 == "":
+                pass
+            else:
+                ai = AI()
+                print("The secret word for game number " + str(choice3_1) + " was")
+                print(ai.give_up_and_return_the_word(driver, int(choice3_1)))
         elif choice == "0":
             break
         else:
